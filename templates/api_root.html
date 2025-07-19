@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: normal;
+        }
+        .header p {
+            margin: 15px 0 0 0;
+            font-size: 1.1em;
+        }
+        .version {
+            background: #34495e;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 35px;
+        }
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: normal;
+        }
+        .endpoint-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .endpoint-card {
+            background: #fafafa;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 3px;
+            transition: background 0.2s ease;
+        }
+        .endpoint-card:hover {
+            background: #f0f0f0;
+            border-color: #3498db;
+        }
+        .endpoint-card h3 {
+            margin: 0 0 8px 0;
+            color: #2c3e50;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        .endpoint-card p {
+            margin: 0 0 12px 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .endpoint-url {
+            background: #2c3e50;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 2px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s ease;
+        }
+        .endpoint-url:hover {
+            background: #34495e;
+            text-decoration: none;
+            color: white;
+        }
+        .required-label {
+            background: #e74c3c;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 2px;
+            font-size: 0.7em;
+            font-weight: bold;
+            float: right;
+            margin-top: 2px;
+        }
+        .exam-section .endpoint-card {
+            border-left: 3px solid #e74c3c;
+        }
+        .main-section .endpoint-card {
+            border-left: 3px solid #27ae60;
+        }
+        .utility-section .endpoint-card {
+            border-left: 3px solid #f39c12;
+        }
+        .footer {
+            background: #34495e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .project-info {
+            background: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 3px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .project-info h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+        }
+        .project-info ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        .project-info li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .status-active {
+            color: #27ae60;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ title }}</h1>
+            <p>{{ description }}</p>
+            <div class="version">Version {{ version }}</div>
+            <div style="margin-top: 15px;" class="status-active">
+                Estado: API Activa
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- Endpoints Principales -->
+            <div class="section main-section">
+                <h2>Endpoints Principales</h2>
+                <div class="endpoint-list">
+                    {% for endpoint in endpoints %}
+                    <div class="endpoint-card">
+                        <h3>{{ endpoint.name }}</h3>
+                        <p>{{ endpoint.description }}</p>
+                        <a href="{{ endpoint.url }}" class="endpoint-url">{{ endpoint.url }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Endpoints Requeridos por el Examen -->
+            <div class="section exam-section">
+                <h2>Endpoints Requeridos por el Examen</h2>
+                <div class="endpoint-list">
+                    {% for endpoint in exam_endpoints %}
+                    <div class="endpoint-card">
+                        <h3>
+                            {{ endpoint.name }}
+                            <span class="required-label">REQUERIDO</span>
+                        </h3>
+                        <p>{{ endpoint.description }}</p>
+                        <a href="{{ endpoint.url }}" class="endpoint-url">{{ endpoint.url }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Endpoints de Utilidades -->
+            <div class="section utility-section">
+                <h2>Utilidades y Documentacion</h2>
+                <div class="endpoint-list">
+                    {% for endpoint in utility_endpoints %}
+                    <div class="endpoint-card">
+                        <h3>{{ endpoint.name }}</h3>
+                        <p>{{ endpoint.description }}</p>
+                        <a href="{{ endpoint.url }}" class="endpoint-url">{{ endpoint.url }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Información del Proyecto -->
+            <div class="project-info">
+                <h3>Informacion del Proyecto</h3>
+                <p>
+                    Esta API fue desarrollada segun los requerimientos especificos del examen para resolver 
+                    el problema de la pizarra de pendientes de Parra's Dev. Implementa el patron MVC 
+                    usando Django REST Framework con todas las funcionalidades solicitadas.
+                </p>
+                <ul>
+                    <li><strong>7 endpoints especificos</strong> requeridos por el examen</li>
+                    <li><strong>CRUD completo</strong> para gestion de pendientes</li>
+                    <li><strong>Patron MVC</strong> implementado correctamente</li>
+                    <li><strong>Integracion con API externa</strong> de Parra's Dev</li>
+                    <li><strong>Panel de administracion</strong> funcional</li>
+                    <li><strong>Base de datos</strong> con datos de ejemplo</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Proyecto completado exitosamente</strong> - Desarrollado para Parra's Dev</p>
+            <p>Desarrollado con Django REST Framework - Version {{ version }}</p>
+        </div>
+    </div>
+</body>
+</html>
