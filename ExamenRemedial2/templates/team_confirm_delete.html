@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Eliminar Equipo</h2>
+<form method="post">{% csrf_token %}<p>¿Seguro que deseas eliminar el equipo {{ object.name }}?</p><button type="submit" class="btn btn-danger">Eliminar</button></form>
+<a href="{% url 'team_list' %}">Cancelar</a>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card mt-4 shadow-lg rounded-4 border-0 animate__animated animate__fadeIn">
+  <!-- Header -->
+  <div class="card-header text-white" style="background: linear-gradient(90deg, var(--color-primary), var(--color-secondary)); border-top-left-radius:1rem; border-top-right-radius:1rem;">
+    <h2 class="mb-0 d-flex align-items-center gap-2" style="font-weight:700; letter-spacing:1px;">
+      <span class="nfl-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" width="28" height="28">
+          <ellipse cx="32" cy="32" rx="28" ry="14" fill="#F59E42" stroke="#22223B" stroke-width="3"/>
+          <rect x="28" y="28" width="8" height="8" rx="2" fill="#fff"/>
+          <rect x="31" y="20" width="2" height="24" rx="1" fill="#fff"/>
+          <rect x="24" y="32" width="16" height="2" rx="1" fill="#fff"/>
+        </svg>
+      </span>
+      NFL Queries
+    </h2>
+  </div>
+
+  <!-- Body -->
+  <div class="card-body" style="background:var(--color-bg);">
+  <ul class="list-group list-group-flush animate__animated animate__fadeIn" style="padding:0;">
+      
+      <!-- All Teams -->
+      <li class="list-group-item query-card d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#e3e8f0 80%,#3B82F6 100%);box-shadow:0 2px 12px rgba(59,130,246,0.10);border-radius:1rem;margin-bottom:1rem;transition:transform 0.2s;">
+        <span class="badge bg-primary p-2" style="font-size:1.2em;box-shadow:0 2px 8px rgba(59,130,246,0.10);">Teams</span>
+        <a href="/queries/teams/" class="fw-bold text-primary" style="font-size:1.1em;">All team names</a>
+      </li>
+
+      <!-- All Owners -->
+      <li class="list-group-item query-card d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#fbe9e7 80%,#D7263D 100%);box-shadow:0 2px 12px rgba(215,38,61,0.10);border-radius:1rem;margin-bottom:1rem;transition:transform 0.2s;">
+        <span class="badge bg-danger p-2" style="font-size:1.2em;box-shadow:0 2px 8px rgba(215,38,61,0.10);">Owners</span>
+        <a href="/queries/owners/" class="fw-bold text-danger" style="font-size:1.1em;">All owner names</a>
+      </li>
+
+      <!-- All Players -->
+      <li class="list-group-item query-card d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#e8f5e9 80%,#4CAF50 100%);box-shadow:0 2px 12px rgba(76,175,80,0.10);border-radius:1rem;margin-bottom:1rem;transition:transform 0.2s;">
+        <span class="badge bg-success p-2" style="font-size:1.2em;box-shadow:0 2px 8px rgba(76,175,80,0.10);">Players</span>
+        <a href="/queries/players/" class="fw-bold text-success" style="font-size:1.1em;">All player names from all teams</a>
+      </li>
+
+      <!-- Team Players -->
+      <li class="list-group-item query-card d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#fffde7 80%,#F59E42 100%);box-shadow:0 2px 12px rgba(245,158,66,0.10);border-radius:1rem;margin-bottom:1rem;transition:transform 0.2s;">
+        <span class="badge bg-warning text-dark p-2" style="font-size:1.2em;box-shadow:0 2px 8px rgba(245,158,66,0.10);">Team</span>
+        <a href="/queries/team_players/" class="fw-bold text-warning" style="font-size:1.1em;">Name and number of all players from a team</a>
+      </li>
+
+      <!-- Team Players Positions -->
+      <li class="list-group-item query-card d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#e3f2fd 80%,#8B5CF6 100%);box-shadow:0 2px 12px rgba(139,92,246,0.10);border-radius:1rem;margin-bottom:1rem;transition:transform 0.2s;">
+        <span class="badge bg-info text-dark p-2" style="font-size:1.2em;box-shadow:0 2px 8px rgba(139,92,246,0.10);">Positions</span>
+        <a href="/queries/team_players_positions/" class="fw-bold text-info" style="font-size:1.1em;">Name, number and position of all players from a team</a>
+      </li>
+
+      <!-- Stadiums -->
+      <li class="list-group-item query-card d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#ececec 80%,#1B365D 100%);box-shadow:0 2px 12px rgba(27,54,93,0.10);border-radius:1rem;margin-bottom:1rem;transition:transform 0.2s;">
+        <span class="badge bg-dark p-2" style="font-size:1.2em;box-shadow:0 2px 8px rgba(27,54,93,0.10);">Stadiums</span>
+        <a href="/queries/stadiums/" class="fw-bold text-dark" style="font-size:1.1em;">Name and capacity of all stadiums</a>
+      </li>
+
+      <!-- Owner & Stadium -->
+      <li class="list-group-item query-card d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#f3f4f6 80%,#6B7280 100%);box-shadow:0 2px 12px rgba(107,114,128,0.10);border-radius:1rem;margin-bottom:1rem;transition:transform 0.2s;">
+        <span class="badge bg-secondary p-2" style="font-size:1.2em;box-shadow:0 2px 8px rgba(107,114,128,0.10);">Owner & Stadium</span>
+        <a href="/queries/owner_stadium/" class="fw-bold text-secondary" style="font-size:1.1em;">Owner name and their stadium</a>
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+<style>
+  .hover-effect {
+    transition: all 0.3s ease-in-out;
+  }
+  .hover-effect:hover {
+    background: rgba(0,0,0,0.05);
+    transform: translateX(5px);
+  }
+</style>
+{% endblock %}

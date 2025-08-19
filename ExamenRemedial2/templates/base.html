@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <title>NFL Control</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        <link href="/static/styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+                        <style>
+                                body {
+                                        background: repeating-linear-gradient(135deg, #3B82F6 0px, #3B82F6 40px, #8B5CF6 40px, #8B5CF6 80px);
+                                        background-size: 120px 120px;
+                                        min-height: 100vh;
+                                }
+                                .nfl-football {
+                                        width: 40px;
+                                        height: 40px;
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                        margin-right: 8px;
+                                        animation: bounce 1.2s infinite alternate;
+                                }
+                                @keyframes bounce {
+                                        0% { transform: translateY(0); }
+                                        100% { transform: translateY(-10px); }
+                                }
+                        </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg shadow-lg rounded-bottom-4 animate__animated animate__fadeInDown" style="background: linear-gradient(90deg, #3B82F6 0%, #EC4899 100%); padding:0.5rem 0;">
+        <div class="container-fluid d-flex align-items-center">
+                                <a class="navbar-brand d-flex align-items-center gap-2" href="/" style="font-weight:700; letter-spacing:1px; color:#fff; font-size:1.7rem;">
+                                                <span class="nfl-football">
+                                                        <!-- Football SVG -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"><ellipse cx="32" cy="32" rx="28" ry="14" fill="#F59E42" stroke="#22223B" stroke-width="3"/><rect x="28" y="28" width="8" height="8" rx="2" fill="#fff"/><rect x="31" y="20" width="2" height="24" rx="1" fill="#fff"/><rect x="24" y="32" width="16" height="2" rx="1" fill="#fff"/></svg>
+                                                </span>
+                                                NFL Control
+                                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto gap-2">
+                        <li class="nav-item"><a class="nav-link px-3 rounded-3 animate__animated animate__pulse animate__delay-1s" style="color:#fff !important;" href="/teams/">Teams</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded-3 animate__animated animate__pulse animate__delay-2s" style="color:#fff !important;" href="/players/">Players</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded-3 animate__animated animate__pulse animate__delay-3s" style="color:#fff !important;" href="/stadiums/">Stadiums</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded-3 animate__animated animate__pulse animate__delay-4s" style="color:#fff !important;" href="/owners/">Owners</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded-3 animate__animated animate__pulse animate__delay-5s" style="color:#fff !important;" href="/queries/">Queries</a></li>
+                        </ul>
+                </div>
+        </div>
+</nav>
+<div class="container mt-4 animate__animated animate__fadeInUp">
+                {% block content %}{% endblock %}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

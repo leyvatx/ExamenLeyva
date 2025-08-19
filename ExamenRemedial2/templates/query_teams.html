@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card mt-4 shadow-lg rounded-4 border-0 animate__animated animate__fadeIn">
+  <div class="card-header text-white" style="background: linear-gradient(90deg, #3B82F6, #8B5CF6); border-top-left-radius:1rem; border-top-right-radius:1rem;">
+    <h3 class="mb-0" style="font-weight:700; letter-spacing:1px;">Teams</h3>
+  </div>
+  <div class="card-body" style="background:var(--color-bg);">
+    <div class="row g-3">
+      {% for name in teams %}
+      <div class="col-md-6">
+        <div class="p-3 rounded-3 shadow-sm" style="background:linear-gradient(90deg,#e3e8f0 80%,#3B82F6 100%);">
+          <div class="fw-bold" style="font-size:1.1em;">{{ name }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <a href="/queries/" class="btn btn-link mt-4">Back</a>
+  </div>
+</div>
+{% endblock %}

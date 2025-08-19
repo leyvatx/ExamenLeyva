@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card mt-4 shadow-lg rounded-4 border-0 animate__animated animate__fadeIn">
+  <div class="card-header text-white" style="background: linear-gradient(90deg, var(--color-primary), var(--color-secondary)); border-top-left-radius:1rem; border-top-right-radius:1rem;">
+  <h2 class="mb-0" style="font-weight:700; letter-spacing:1px;">Stadiums</h2>
+  </div>
+  <div class="card-body" style="background:var(--color-bg);">
+    <a href="{% url 'stadium_add' %}" class="btn btn-primary mb-3 shadow-sm">Add Stadium</a>
+    <table class="table table-striped table-hover shadow-sm rounded-3">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Capacity</th>
+          <th>Box Size</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stadium in stadiums %}
+        <tr style="transition:background 0.3s;">
+          <td style="font-weight:600;">{{ stadium.name }}</td>
+          <td><span class="badge bg-green" style="font-size:1em;">{{ stadium.capacity }}</span></td>
+          <td>{{ stadium.box_size }}</td>
+          <td>
+            <a href="{% url 'stadium_edit' stadium.pk %}" class="btn btn-sm btn-warning me-1">Edit</a>
+            <a href="{% url 'stadium_delete' stadium.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
